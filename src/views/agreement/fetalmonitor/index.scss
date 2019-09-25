@@ -1,0 +1,72 @@
+.content-page {
+    padding-bottom: 60px;
+}
+
+.content-box {
+    padding: 0 15px 20px;
+    color: #222;
+}
+
+.content-box+.content-box {
+    border-top: solid #F9F9F9 10px;
+}
+
+.content-box-title {
+    text-align: center;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+}
+
+.content-box-preface {
+    text-align: justify;
+    font-weight: 550;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.content-item-wrapper h3 {
+    margin: 20px 0 15px;
+    font-weight: 550;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: left;
+}
+
+.content-item-wrapper p {
+    text-align: justify;
+    font-size: 14px;
+    line-height: 24px;
+    margin: 0;
+}
+
+.content-item-indent-wrapper p {
+    text-align: justify;
+    text-indent: 2em;
+    font-size: 14px;
+    line-height: 24px;
+    margin: 0;
+}
+
+.bottom-box {
+    position: fixed;
+    bottom: 0;
+    background: #fff;
+    width: 100%;
+    padding: 12px 15px;
+    box-sizing: border-box;
+}
+
+.agree-btn {
+    width: 100%;
+    height: 40px;
+    border-radius: 25px;
+    background: linear-gradient(to left, #FF93B2, #FF789E);
+    color: #fff;
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+    font-weight: 550;
+}
