@@ -9,7 +9,7 @@
         <span class="semi">{{semi}}</span>
         <span class="time">{{time}}</span>
       </span>
-      <button @click="back" class="btn"><span>←</span>&nbsp;&nbsp;BACK TO BLOG</button>
+      <button @click.stop="back" class="btn"><span>←</span>&nbsp;&nbsp;BACK TO BLOG</button>
     </div>
   </div>
 </template>

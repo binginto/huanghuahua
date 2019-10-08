@@ -4,7 +4,7 @@
       <nav-container></nav-container>
       <state-info></state-info>
     </div>
-    <div id="article">
+    <div id="article" v-if="hasRichText">
     </div>
   </div>
 </template>
@@ -20,12 +20,13 @@
   export default {
     data() {
       return {
-        title: 'info'
+        title: 'info',
+        hasRichText: false
       }
     },
     created() {
-      var id = util.getQueryString('id')
-      this.getArticle(id)
+      // var id = util.getQueryString('id')
+      // this.getArticle(id)
     },
     methods: {
       getArticle(id) {

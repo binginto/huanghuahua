@@ -6,7 +6,7 @@
           <h3>{{info.title}}</h3>
           <p>{{info.desc}}</p>
         </div>
-        <a @click="animate(info.frontId)" id="hero-down-arrow" class="hero-down-arrow"></a>
+        <a @click.stop="animate(info.frontId)" id="hero-down-arrow" class="hero-down-arrow"></a>
       </div>
     </div>
   </div>

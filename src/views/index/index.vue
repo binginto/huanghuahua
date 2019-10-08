@@ -9,9 +9,9 @@
 </template>
 
 <script>
-  import contentContainer from '../../components/contentContainer/contentContainer'
+  import contentContainer from '@/components/contentContainer/contentContainer'
   import stateContainer from './components/stateContainer'
-  import navContainer from '../../components/navContainer/navContainer'
+  import navContainer from '@/components/navContainer/navContainer'
   export default {
     name: 'Index',
     data() {

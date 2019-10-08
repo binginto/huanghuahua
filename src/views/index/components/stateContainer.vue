@@ -9,13 +9,12 @@
             </h2>
             <p class="hero-content-blog"></p>
             <div class="hero-cta-wrap">
-              <router-link to="/info?id=56ff1630-30b2-11e8-aabe-773a5338e430"
-                class="hero-cta-btn button button-white-hollow">Read More</router-link>
+              <div @click.stop="routeLink" class="hero-cta-btn button button-white-hollow">Read More</div>
             </div>
           </div>
         </div>
       </div>
-      <a @click="animate" id="hero-down-arrow" class="hero-down-arrow"></a>
+      <a @click.stop="animate" id="hero-down-arrow" class="hero-down-arrow"></a>
     </section>
   </div>
 </template>
@@ -30,10 +29,15 @@
     },
     methods: {
       animate() {
-        var blog = $('#blog').offset().top
+        let blog = $('#blog').offset() ? $('#blog').offset().top : 0
         $('html,body').animate({
           scrollTop: blog
         }, 500)
+      },
+      routeLink() {
+        this.$router.push({
+          path: '/info'
+        })
       }
     }
   }
@@ -129,7 +133,6 @@
         font-size: 15px;
         font-weight: 500;
         letter-spacing: .2em;
-        height: 68px;
         line-height: 1.2;
         padding: 22px 30px;
         text-align: center;

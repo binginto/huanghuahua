@@ -1,7 +1,7 @@
 <template>
-  <div id="blog" class="main-container">
+  <div id="blog" class="main-container" v-if="info.length > 0">
     <div class="main-item two-colums three-colums" v-for="item in info">
-      <div class="item" @click="toInfo(item.id)">
+      <div class="item" @click.stop="toInfo(item.id)">
         <img :src="item.banner">
         <div class="main-text">
           <h3>{{item.title}}</h3>
@@ -19,27 +19,21 @@
 </template>
 
 <script>
-  import router from '../../router'
   import util from '@/views/util/util'
+  import info from '@/config/info.js'
   export default {
     data() {
       return {
-        info: []
+        info: info
       }
     },
-    created() {
-      // this.axios.get('v0/article').then((response) => {
-      //   var data = response.data.data
-      //   var length = data.length
-      //   for (var i = 0; i < length; i++) {
-      //     data[i].createdAt = util.format(data[i].createdAt)
-      //   }
-      //   this.info = response.data.data
-      // })
-    },
+    created() {},
     methods: {
       toInfo(id) {
-        router.replace('/info?id=' + id)
+        console.log(info)
+        this.$router.push({
+          path: '/info?id=' + id
+        })
       }
     }
   }
@@ -49,7 +43,7 @@
   @import '@/styles/variable';
 
   .main-container {
-    padding: 30px;
+    padding: 30px 15vw;
     background: #eee;
     display: flex;
     flex-direction: row;
@@ -63,15 +57,18 @@
     flex: 0 1 100%;
     max-width: 100%;
     padding: 0 20px 30px;
+    box-sizing: border-box;
     background: #eee;
-    height: 500px;
+    height: 380px;
 
     img {
       width: 100%;
-      height: 180px;
+      height: 150px;
       border-radius: 15px 15px 0 0;
+      margin-bottom: 10px;
     }
   }
+
 
   .main-item:hover {
     opacity: 0.6;
@@ -98,7 +95,7 @@
 
       img {
         width: 100%;
-        height: 180px;
+        height: 150px;
       }
     }
   }
@@ -110,7 +107,7 @@
 
       img {
         width: 100%;
-        height: 180px;
+        height: 150px;
       }
     }
   }
@@ -122,14 +119,10 @@
   }
 
   .main-text {
-    display: flex;
-    padding: 20px 20px 60px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    padding: 0 15px;
+    box-sizing: border-box;
     width: 100%;
-    height: 210px;
+    height: 110px;
     border-bottom: 1px solid #eee;
 
     h3 {
@@ -154,6 +147,12 @@
       color: #505153;
       font-size: 15px;
       line-height: 1.5;
+      text-align: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
   }
 

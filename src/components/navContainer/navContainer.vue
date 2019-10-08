@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="top-nav">
-      <button @click="showMenu" class="toggle-button navigation-toggle">
+      <button @click.stop="showMenu" class="toggle-button navigation-toggle">
         <span class="toggle-button-menu-text">Menu</span>
         <span class="toggle-icon">
           <span class="toggle-button-icon-bar"></span>
@@ -12,7 +12,7 @@
     </div>
     <div class="show-menu showMenuActive" :class="{ active: isShowMenu, unactive: (!isShowMenu && !isFirst)}">
       <div class="top-nav">
-        <button @click="showMenu" class="toggle-button navigation-toggle toggle-button-active">
+        <button @click.stop="showMenu" class="toggle-button navigation-toggle toggle-button-active">
           <span class="toggle-button-menu-text">Menu</span>
           <span class="toggle-icon">
             <span class="toggle-button-icon-bar toggle-button-icon-bar-active-rotate-right"></span>
@@ -25,16 +25,16 @@
         <nav class="nav-container">
           <ul class="hide-nav hide-col">
             <li class="nav-item">
-              <router-link to="/aboutMe" class="hide-link">About Me</router-link>
+              <span @click.stop="routeLink('/aboutMe')" class="hide-link">About Me</span>
             </li>
             <li class="nav-item">
-              <router-link to="/myWork" class="hide-link">My Work</router-link>
+              <span @click.stop="routeLink('/myWork')" class="hide-link">My Work</span>
             </li>
             <li class="nav-item">
-              <router-link to="/myBlog" class="hide-link">My Blog</router-link>
+              <span @click.stop="routeLink('/myBlog')" class="hide-link">My Blog</span>
             </li>
             <li class="nav-item">
-              <router-link to="/contactMe" class="hide-link">Contact Me</router-link>
+              <span @click.stop="routeLink('/contactMe')" class="hide-link">Contact Me</span>
             </li>
           </ul>
         </nav>
@@ -56,6 +56,11 @@
       showMenu() {
         this.isShowMenu = !this.isShowMenu
         this.isFirst = false
+      },
+      routeLink(page) {
+        this.$router.push({
+          path: page
+        })
       }
     }
   }
