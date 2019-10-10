@@ -1,0 +1,25 @@
+<p>vue传参有几种情况，父组件传参到子组件，子组件传参到父组件，组件之间的传参。一般可以采用props实现父传参到子。采用$emit监控事件可以实现子传参到父和组件之间传参。遇到大型的应用，也可以采用vuex，通过this.$store.state来实现组件间传参。下面是简单的Demo。</p>
+<h2 id="-">父传参到子</h2>
+<p>通过props，父组件可传参到子组件。</p>
+<h3 id="-">子组件</h3>
+<pre><code class="lang-javascript">Vue.component(&#39;child&#39;, {
+  // 声明 props
+  props: [&#39;message&#39;]
+  // 就像 data 一样，prop 也可以在模板中使用
+  // 同样也可以在 vm 实例中通过 this.message 来使用
+  template: &#39;&lt;span&gt;{{ message }}&lt;/span&gt;&#39;
+})；
+</code></pre>
+<h3 id="-">父组件</h3>
+<pre><code class="lang-xml">&lt;child message=&quot;hello!&quot;&gt;&lt;/child&gt;
+</code></pre>
+<h2 id="-">子传父和组件间传参</h2>
+<p>通过$emit和监听事件，子组件可传参到父组件。</p>
+<h3 id="-">子组件发射要传出数据</h3>
+<pre><code class="lang-javascript">this.$emit(&quot;listenToChildEvent&quot;, &quot;this message is from child&quot;);
+</code></pre>
+<h3 id="-">父组件监听子组件传出数据</h3>
+<pre><code class="lang-xml">&lt;child :message=&quot;parentMsg&quot; v-on:listenToChildEvent=&quot;showMsgFromChild&quot; &gt;&lt;/child&gt;
+</code></pre>
+<h2 id="vuex-">Vuex管理传参数据</h2>
+<p>Vuex通过State状态来存储传参数据，通过Mutation来同步修改Vuex的State状态，通过action来异步修改mutation，从而达到异步修改State目的。.commit用于提交状态。.dispatch用于触发状态。</p>

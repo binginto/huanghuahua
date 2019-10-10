@@ -1,0 +1,406 @@
+<h2 id="-">世界微商大会页面接口设计</h2>
+<h3 id="-">轮播图沿用之前接口</h3>
+<h2 id="-">首页</h2>
+<h3 id="-">获取会场信息</h3>
+<ul>
+<li>请求路径</li>
+</ul>
+<pre><code class="lang-javascript">GET /v0/meeting/primary  请求主会场
+GET ／v0/meeting／secondary  请求分会场
+
+&lt;!--补充说明--&gt;
+两者的返回消息一致 
+</code></pre>
+<ul>
+<li>返回消息</li>
+</ul>
+<pre><code class="lang-javascript">{
+    status: &#39;&#39;,
+    data: [
+        {
+          id: &#39;&#39;, //活动id，唯一
+          avatar: &#39;&#39;, // 照片url
+          name : &#39;&#39;,  // 票的名称
+          beginedAt: &#39;&#39;,  //开始时间
+          limitNum: &#39;&#39;, // 票的限制数量
+          restNum: &#39;&#39; // 剩余票的数量
+          price: &#39;&#39;, 票的价格
+        }
+    ]
+}
+</code></pre>
+<h3 id="-">获取课程信息</h3>
+<ul>
+<li><p>请求路径</p>
+<pre><code class="lang-javascript">GET /v0/course
+</code></pre>
+</li>
+<li><p>返回消息</p>
+<pre><code class="lang-javascript">{
+  status: &#39;&#39;,
+  data: [
+      {
+        id: ‘’， //课程id，唯一
+        img: &#39;&#39;, // 照片url
+        name : &#39;&#39;,  // 课程的名称
+        desc: &#39;&#39;,  //课程介绍
+        price: &#39;&#39;, // 课程价格
+      }
+  ]
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="-">获取战略合作伙伴信息</h3>
+<ul>
+<li><p>请求路径</p>
+<pre><code class="lang-javascript">GET v0/partners
+</code></pre>
+</li>
+<li><p>返回消息</p>
+<pre><code class="lang-javascript">{
+  status: &#39;&#39;,
+  data: [
+      {
+        img: &#39;&#39;, // 照片url
+      }
+  ]
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="-">详情 (活动详情)</h2>
+<ul>
+<li><p>请求路径</p>
+<pre><code class="lang-javascript">GET v0/meeting／{{id}}
+</code></pre>
+<ul>
+<li>返回消息<pre><code class="lang-javascript">{
+status: &#39;&#39;,
+data: [
+    {
+      banner: &#39;&#39;, // 活动宣传图
+      name: &#39;&#39;, // 票的名称
+      price: &#39;&#39;,// 价格
+      beginedAt:&#39;&#39;, //活动开始时间
+      endedAt: &#39;&#39;,//活动结束时间 
+      status: &#39;&#39;, // 判断是否还能买票，1表示可以，0表示报名结束。不能。
+      viewedNum: &#39;&#39;, //浏览人数
+      sharedNum: &#39;&#39;, //分享人数
+      address: &#39;&#39;, // 地点
+      signedNum: &#39;&#39;, //已经报名人数
+      limitedNum:
+      restNum: &#39;&#39;， //剩余票数
+      organizer:{
+          name: &#39;&#39;, // 名字
+          desc: &#39;&#39;, // 简介
+          img: &#39;&#39;, // 头像
+          phone: &#39;&#39;, //联系方式
+      }，
+      introduction: &#39;&#39;// 活动介绍图片
+    }
+]
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="-">详情 (课程详情)</h2>
+<ul>
+<li><p>请求路径</p>
+<pre><code class="lang-javascript">GET /v0/course／{{id}}
+&lt;!--补充说明--&gt;
+由于模版相同，课程详情和活动详情接口返回数据格式相同，只是内容不一样
+&lt;!--补充说明--&gt;
+</code></pre>
+<ul>
+<li>返回消息<pre><code class="lang-javascript">{
+status: &#39;&#39;,
+data: [
+    {
+      banner: &#39;&#39;, // 宣传图
+      name: &#39;&#39;, // 票的名称
+      price： ‘’,// 价格
+      beginedAt：&#39;&#39;, //开始时间
+      endedAt: &#39;&#39;,//结束时间 
+      status： ‘’, // 判断是否还能买票，1表示可以，0表示报名结束。不能。
+      viewedNum: &#39;&#39;, //浏览人数
+      sharedNum: &#39;&#39;, //分享人数
+      address: &#39;&#39;, // 地点
+      signedNum: &#39;&#39;, //已经报名人数
+      limitedNum:
+      restNum：‘’， //剩余票数
+      organizer：{
+          name: &#39;&#39;, // 名字
+          desc: &#39;&#39;, // 简介
+          img: &#39;&#39;, // 头像
+          phone: &#39;&#39;, //联系方式
+      }，
+      introduction：‘’，// 介绍图片
+    }
+]
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="-">回顾</h2>
+<h3 id="-">视频回顾</h3>
+<ul>
+<li><p>请求路径</p>
+<pre><code class="lang-javascript">GET /v0/history/video
+</code></pre>
+</li>
+<li><p>返回消息</p>
+<pre><code class="lang-javascript">{
+  status: &#39;&#39;,
+  data: [
+      {
+        videoUrl: &#39;&#39;, //视频回顾中视频的URL
+        desc : &#39;&#39;, // 介绍说明
+        placeType: &#39;&#39;, 地点类型，1表示主会场，2表示分会场。
+      }
+  ]
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="-">图文回顾</h3>
+<pre><code class="lang-javascript">GET /v0/history/graphic
+</code></pre>
+<ul>
+<li>返回消息<pre><code class="lang-javascript">{
+  status: &#39;&#39;,
+  data: [
+      {
+        avatar: &#39;&#39;, // 图文回顾中图片url
+        desc : &#39;&#39;, // 介绍说明
+        updatedAt: &#39;&#39;, //仅在图文回顾中存在，显示时间
+        viewedNum: &#39;&#39;, // 浏览次数，仅在图文回顾中出现
+      }
+  ]
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="-">嘉宾</h2>
+<ul>
+<li><p>请求路径</p>
+<pre><code class="lang-javascript">GET /v0/guest
+</code></pre>
+</li>
+<li><p>返回消息</p>
+<pre><code class="lang-javascript">{
+  status: &#39;&#39;,
+  data: [
+      {
+        //img: &#39;&#39;, // 图片url
+        avatar: &#39;&#39;,
+        name : &#39;&#39;, // 嘉宾名字
+        desc: &#39;&#39;, //嘉宾介绍
+      }
+  ]
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="-">议程</h2>
+<ul>
+<li>请求路径<pre><code class="lang-javascript">GET /v0/schedule
+//  议程数据量较少，都是图片，可以选择不做接口
+</code></pre>
+</li>
+<li>返回消息<pre><code class="lang-javascript">{
+  status: &#39;&#39;,
+  data: [
+      {
+        img: &#39;&#39;, // 图片url
+        date : &#39;&#39;, // 日期时间
+      }
+  ]
+}
+</code></pre>
+<h2 id="-">指南</h2>
+</li>
+<li><p>请求路径</p>
+<pre><code class="lang-javascript">GET /v0/guide
+// 指南同理，这里可以不做接口,直接使用本地图片。
+</code></pre>
+</li>
+<li><p>返回消息</p>
+<pre><code class="lang-javascript">{
+  status: &#39;&#39;,
+  data: {
+        img: &#39;&#39;, // 图片url
+      }
+}
+</code></pre>
+</li>
+</ul>
+<h1 id="-">新加接口</h1>
+<h2 id="-openid">首页openId</h2>
+<ul>
+<li>请求路径<pre><code class="lang-javascript">GET /v0/openId
+</code></pre>
+</li>
+<li><p>请求参数</p>
+<pre><code class="lang-javascript">data: {code: &#39;&#39;}
+</code></pre>
+</li>
+<li><p>返回消息</p>
+<pre><code class="lang-javascript">{
+  status: &#39;&#39;,
+  data: {
+          &quot;openId&quot;: &quot;&quot;,
+          &quot;&quot;: &quot;&quot;
+      }
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="-">个人中心页面</h2>
+<h3 id="-">我的首页</h3>
+<ul>
+<li>请求路径
+<code>`</code> javascript
+GET /v0/user{openId}</li>
+</ul>
+<pre><code>
+- 返回消息
+``` javascript
+{
+    status: &#39;&#39;,
+    data: {
+            &quot;signedNum&quot;: &quot;&quot;,
+            &quot;collectedNum&quot;: &quot;&quot;
+        }
+}
+</code></pre><h3 id="-">我的报名</h3>
+<ul>
+<li>请求路径
+<code>`</code> javascript
+GET /v0/signed</li>
+</ul>
+<pre><code>
+- 请求参数
+``` javascript
+data: {openId: &#39;&#39;}
+</code></pre><ul>
+<li>返回消息<pre><code class="lang-javascript">{
+  status: &#39;&#39;,
+  data: [
+   {
+    banner: &quot;&quot;,
+    name: &quot;&quot;
+   }
+  ]
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="-">我的收藏</h3>
+<ul>
+<li>请求路径
+<code>`</code> javascript
+GET /v0/collected</li>
+</ul>
+<pre><code>
+- 请求参数
+``` javascript
+data: {openId: &#39;&#39;}
+</code></pre><ul>
+<li>返回消息<pre><code class="lang-javascript">{
+  status: &#39;&#39;,
+  data: [
+   {
+    banner: &quot;&quot;,
+    name: &quot;&quot;
+   }
+  ]
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="-">我的订单</h3>
+<ul>
+<li><p>请求路径</p>
+<pre><code class="lang-javascript">GET /v0/order/all  全部订单
+GET /v0/order/coming  待参与
+GET /v0/order/finished  完成
+GET /v0/order/reimburse   退款
+GET /v0/order/cancel    取消
+</code></pre>
+</li>
+<li><p>请求参数</p>
+<pre><code class="lang-javascript">data: {openId: &#39;&#39;}
+</code></pre>
+</li>
+<li><p>返回消息</p>
+<pre><code class="lang-javascript">{
+  status: &#39;&#39;,
+  data: [
+   {
+    banner: &quot;&quot;,
+    name: &quot;&quot;
+   }
+  ]
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="-">功能</h3>
+<h4 id="-">收藏</h4>
+<ul>
+<li>增删收藏</li>
+<li>请求路径<pre><code class="lang-javascript">POST /v0/collect
+</code></pre>
+</li>
+<li>请求参数
+<code>`</code> javascript
+data: {
+openId: &#39;&#39;,
+type: &#39;&#39;,
+name: &#39;&#39;,
+action: &#39;cancel or add&#39;</li>
+</ul>
+<p>}</p>
+<pre><code>
+#### 报名
+- 请求路径
+``` javascript
+POST /v0/sign
+</code></pre><ul>
+<li>请求参数<pre><code class="lang-javascript">data: {
+  openId: &#39;&#39;,
+  username: &#39;&#39;,
+  phone: &#39;&#39;,
+  cost: &#39;&#39;,
+  ticketname: &#39;&#39;,
+  tickettype: &#39;&#39;
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="-">项目查看</h4>
+<pre><code class="lang-javascript">POST /v0/view
+</code></pre>
+<pre><code>{
+    data: {
+        type: &#39;&#39;,
+        name: &#39;&#39;,
+        openId: &#39;&#39;
+    }
+}
+</code></pre><h4 id="share">share</h4>
+<pre><code class="lang-javascript">POST /v0/share
+</code></pre>
+<pre><code>{
+    data: {
+        type: &#39;&#39;,
+        name: &#39;&#39;,
+        openId: &#39;&#39;
+    }
+}
+</code></pre>

@@ -13,6 +13,7 @@ Vue.prototype.api = api
 Vue.prototype.$request = request
 Vue.prototype.config = config
 Vue.prototype.$wx = wx
+// Vue.prototype.database = database
 
 Vue.config.productionTip = false
 

@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="new-container">
+    <div class="new-container" :style="{backgroundImage: 'url(' + bgImage + ')'}">
       <nav-container></nav-container>
-      <state-info></state-info>
+      <state-info :currentInfo="currentInfo"></state-info>
     </div>
-    <div id="article" v-if="hasRichText">
+    <div id="article">
     </div>
   </div>
 </template>
@@ -16,48 +16,66 @@
   import stateInfo from './components/stateInfo'
   import hljs from 'highlight.js'
   import 'highlight.js/styles/googlecode.css'
+  import info from '@/config/info.js'
+  import database from '@/config/database.js'
 
   export default {
     data() {
       return {
         title: 'info',
-        hasRichText: false
+        currentInfo: {},
+        bgImage: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2422436610,701962099&fm=26&gp=0.jpg',
+        dataContent: ''
       }
     },
     created() {
-      // var id = util.getQueryString('id')
-      // this.getArticle(id)
+      const id = this.$route.query.id
+      for (let i in info) {
+        if (info[i].id === id) {
+          this.currentInfo = info[i]
+          this.bgImage = info[i].banner
+          break
+        }
+      }
+      const that = this
+      setTimeout(() => {
+        that.getArticle(id)
+      }, 100);
     },
     methods: {
       getArticle(id) {
-        this.axios.get('v0/article/' + id).then((response) => {
-          var data = response.data.data
-          this.testHtml = data.content
-          $('#article').html(data.content)
-          var blocks = $('#article pre code')
-          var bLength = blocks.length
-          for (var k = 0; k < bLength; k++) {
-            hljs.highlightBlock(blocks[k])
+        let data = ''
+        for (let i in database) {
+          if (database[i].id === id) {
+            data = database[i].content
+            this.dataContent = data
+            this.hasRichText = true
+            break
           }
-          var tables = $('#article table')
-          var tLength = tables.length
-          var tbody = $('#article tbody tr td')
-          var z = 0
-          for (var i = 0; i < tLength; i++) {
-            var rows = tables[i].rows
-            var cols = tables[i].rows[0].cells
-            if (i > 0) {
-              console.log(cols.length)
-              z -= cols.length
-            }
-            for (var j = 0; j < rows.length; j++) {
-              for (var t = 0; t < rows[j].cells.length; t++) {
-                $(tbody[z]).attr('data-label', rows[0].cells[t].innerText)
-                z++
-              }
+        }
+        $('#article').html(data)
+        var blocks = $('#article pre code')
+        var bLength = blocks.length
+        for (var k = 0; k < bLength; k++) {
+          hljs.highlightBlock(blocks[k])
+        }
+        var tables = $('#article table')
+        var tLength = tables.length
+        var tbody = $('#article tbody tr td')
+        var z = 0
+        for (var i = 0; i < tLength; i++) {
+          var rows = tables[i].rows
+          var cols = tables[i].rows[0].cells
+          if (i > 0) {
+            z -= cols.length
+          }
+          for (var j = 0; j < rows.length; j++) {
+            for (var t = 0; t < rows[j].cells.length; t++) {
+              $(tbody[z]).attr('data-label', rows[0].cells[t].innerText)
+              z++
             }
           }
-        })
+        }
       }
     },
     components: {
@@ -73,7 +91,6 @@
   .new-container {
     width: 100vw;
     height: 100vh;
-    background: url('../../assets/photo/cycle.jpg') #222 no-repeat 50%;
     background-size: cover;
     color: #fff;
   }

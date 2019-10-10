@@ -1,13 +1,13 @@
 <template>
   <div class="test">
     <div class="head-title">
-      <h1>{{title}}</h1>
+      <h1>{{currentInfo.title}}</h1>
     </div>
     <div class="state-item">
       <span class="bottom-text">
-        <span class="author">{{author}}</span>
+        <span class="author">{{currentInfo.author}}</span>
         <span class="semi">{{semi}}</span>
-        <span class="time">{{time}}</span>
+        <span class="time">{{currentInfo.createdAt}}</span>
       </span>
       <button @click.stop="back" class="btn"><span>←</span>&nbsp;&nbsp;BACK TO BLOG</button>
     </div>
@@ -17,6 +17,9 @@
 <script>
   import router from '../../../router'
   export default {
+    props: {
+      currentInfo: Object
+    },
     data() {
       return {
         title: 'aboutMe',

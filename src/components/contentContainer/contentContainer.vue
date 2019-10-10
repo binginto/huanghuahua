@@ -59,11 +59,11 @@
     padding: 0 20px 30px;
     box-sizing: border-box;
     background: #eee;
-    height: 380px;
+    height: 400px;
 
     img {
       width: 100%;
-      height: 150px;
+      height: 170px;
       border-radius: 15px 15px 0 0;
       margin-bottom: 10px;
     }
@@ -95,7 +95,7 @@
 
       img {
         width: 100%;
-        height: 150px;
+        height: 170px;
       }
     }
   }
@@ -107,7 +107,7 @@
 
       img {
         width: 100%;
-        height: 150px;
+        height: 170px;
       }
     }
   }
