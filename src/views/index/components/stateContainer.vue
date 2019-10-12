@@ -36,7 +36,7 @@
       },
       routeLink() {
         this.$router.push({
-          path: '/info'
+          path: '/myBlog'
         })
       }
     }

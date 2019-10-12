@@ -69,6 +69,11 @@
   @import '@/styles/variable';
   @import '@/styles/init';
 
+  @font-face {
+    font-family: myText;
+    src: url('./assets/myText.ttf');
+  }
+
   #app {
     font-family: "Avenir", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

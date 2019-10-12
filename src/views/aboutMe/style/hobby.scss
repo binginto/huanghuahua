@@ -1,0 +1,165 @@
+/*首页动画*/
+.circle_box {
+  width: 100%;
+  margin: 50px 8%;
+  height: 100%;
+  position: relative;
+}
+
+
+.round div:hover {
+  background: rgb(255, 100, 97) !important;
+}
+
+.round:nth-child(1) {
+  position: absolute;
+  padding: 13px;
+  left: 0px;
+  top: 79px;
+}
+
+.round:nth-child(1) div {
+  background: #3a96e1;
+}
+
+.round:nth-child(2) {
+  position: absolute;
+  left: 176px;
+  top: 0;
+  padding: 13px;
+}
+
+.round:nth-child(2) div {
+  background: #c1bd57;
+}
+
+.round:nth-child(3) {
+  position: absolute;
+  left: 199px;
+  top: 199px;
+  padding: 13px;
+}
+
+.round:nth-child(3) div {
+  background: #d67c61;
+}
+
+
+.round:nth-child(4) {
+  position: absolute;
+  left: 348px;
+  top: 128px;
+  padding: 13px;
+}
+
+.round:nth-child(4) div {
+  background: #307cc2;
+}
+
+.round:nth-child(5) {
+  position: absolute;
+  left: 519px;
+  top: 94px;
+  padding: 13px;
+}
+
+.round:nth-child(6) {
+  position: absolute;
+  left: 705px;
+  top: 10px;
+  padding: 13px;
+}
+
+.round:nth-child(6) div {
+  background: #307cc2;
+}
+
+.round:nth-child(7) {
+  position: absolute;
+  left: 638px;
+  top: 171px;
+  padding: 13px;
+}
+
+.round:nth-child(7) div {
+  background: #c1bd57;
+}
+
+.round:nth-child(8) {
+  position: absolute;
+  left: 860px;
+  top: 113px;
+  padding: 13px;
+}
+
+.round:nth-child(8) div:first-child {
+  width: 75px;
+  height: 75px;
+}
+
+.round:nth-child(8) div:first-child a {
+  line-height: 70px;
+  font-size: 16px;
+}
+
+.round:nth-child(8) div:nth-child(2) {
+  width: 75px;
+  height: 75px;
+}
+
+.round:nth-child(8) div:last-child {
+  width: 85px;
+  height: 85px;
+}
+
+.round:nth-child(9) {
+  position: absolute;
+  left: 509px;
+  top: 253px;
+  padding: 13px;
+}
+
+.round:nth-child(9) div {
+  background: #a36157;
+}
+
+.round:nth-child(10) {
+  position: absolute;
+  left: 630px;
+  top: 5px;
+  padding: 13px;
+}
+
+.round:nth-child(10) div {
+  background: #2663a4;
+}
+
+.round:nth-child(11) {
+  position: absolute;
+  left: 149px;
+  top: 145px;
+  padding: 26px;
+}
+
+.round:nth-child(11) div {
+  background: #1c4a86;
+}
+
+.circle a {
+  font-size: 18px;
+  line-height: 100px;
+  color: #000735;
+  font-weight: bold;
+}
+
+.circle {
+  background: #3a96e1;
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  z-index: 999;
+  text-align: center;
+  top: 18px;
+  left: 18px;
+  position: absolute;
+}
