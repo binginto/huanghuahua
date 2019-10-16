@@ -28,13 +28,10 @@
               <span @click.stop="routeLink('/aboutMe')" class="hide-link">About Me</span>
             </li>
             <li class="nav-item">
-              <span @click.stop="routeLink('/myWork')" class="hide-link">My Work</span>
-            </li>
-            <li class="nav-item">
               <span @click.stop="routeLink('/myBlog')" class="hide-link">My Blog</span>
             </li>
             <li class="nav-item">
-              <span @click.stop="routeLink('/contactMe')" class="hide-link">Contact Me</span>
+              <span @click.stop="routeLink('/myWork')" class="hide-link">interesing thing</span>
             </li>
           </ul>
         </nav>

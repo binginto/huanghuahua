@@ -34,5 +34,12 @@ export default [
     name: 'Info',
     component: () =>
       import('@/views/info/info.vue'),
-  }
+  },
+  {
+    path: '/showWork',
+    name: 'showWork',
+    component: () =>
+      import('@/views/myWork/showWork.vue'),
+  },
+
 ]

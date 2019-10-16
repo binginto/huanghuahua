@@ -1,6 +1,6 @@
 <template>
   <div class="circle_box">
-    <div class="round" v-for="item in hobbys" v-key="this" @>
+    <div class="round" v-for="item in hobbys" :key="item" @>
       <div class="circle">
         <a>{{item}}</a>
       </div>

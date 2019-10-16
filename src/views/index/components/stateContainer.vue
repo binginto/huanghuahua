@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="my-container">
+    <div class="my-container">
       <div class="row row-vc row-hc row-flat">
         <div class="col">
           <div class="hero-content">
@@ -15,7 +15,7 @@
         </div>
       </div>
       <a @click.stop="animate" id="hero-down-arrow" class="hero-down-arrow"></a>
-    </section>
+    </div>
   </div>
 </template>
 
@@ -52,7 +52,6 @@
     max-height: 80vh;
 
     .row {
-      position: relative;
       min-height: 60vh;
       z-index: 100;
       display: -webkit-flex;
@@ -106,6 +105,7 @@
 
     .hero-cta-wrap {
       margin-top: 50px;
+      z-index: 99;
 
       .hero-cta-btn {
         display: block;

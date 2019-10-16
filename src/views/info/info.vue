@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div class="new-container" :style="{backgroundImage: 'url(' + bgImage + ')'}">
+    <div class="new-container" :style="{backgroundImage: 'url(' + bgImage + ')'}" @click="showText">
+      <showText ref="showText"></showText>
       <nav-container></nav-container>
       <state-info :currentInfo="currentInfo"></state-info>
     </div>
@@ -18,6 +19,7 @@
   import 'highlight.js/styles/googlecode.css'
   import info from '@/config/info.js'
   import database from '@/config/database.js'
+  import showText from '@/components/showText/showText'
 
   export default {
     data() {
@@ -76,11 +78,15 @@
             }
           }
         }
+      },
+      showText(e) {
+        this.$refs.showText.showText(e)
       }
     },
     components: {
       navContainer,
-      stateInfo
+      stateInfo,
+      showText
     }
   }
 </script>
